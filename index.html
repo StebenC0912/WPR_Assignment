@@ -5,6 +5,7 @@
 
 <head>
   <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>HTML Quiz</title>
   <link rel="stylesheet" href="style.css">
   <link rel="icon" type="image/png" href="images/favicon-32x32.png" sizes="32x32" />
@@ -46,7 +47,7 @@
     </section>
     <p id="author">By Tran Linh</p>
     <section id="introduction">
-      <!--  -->
+      <!-- introduction give basic information like how many questions and the purpose of the test. -->
       <div id="text-in-intro">
         <h2>The Test</h2>
       <div>
@@ -69,7 +70,7 @@
     </section>
 
     <section id="attempt-quiz">
-      <!--  -->
+      <!-- this part is going to give the question and 4 answer for user to choose-->
       <div>
         <h1 class="question-index">Question 1 of 10</h1>
         <p class="question-text">question 5</p>
@@ -83,14 +84,51 @@
           
           <label for="answer-4"><input type="radio" name="question-1" value="answer-4"> option 4</label>
       </div>
+      </div>
       <div id="btn-submit">
         <button >Submit your answer ></button>
       </div>
     </section>
     
     <section id="review-quiz">
-      <!--  -->
-      
+      <!-- this part is going to give the result box and the compare the correct answer to the user answer-->
+      <div>
+        <h1 class="question-index">Question 1 of 10</h1>
+        <p class="question-text">question 5</p>
+        <div class="answer">
+          
+          <label for="answer-1" class="correct-answer"><input type="radio" name="question-1" value="answer-1" disabled checked> option 1 <p>Correct answer</p></label><br>
+          
+          <label for="answer-2"><input type="radio" name="question-1" value="answer-2" disabled> option 2</label><br>
+          
+          <label for="answer-3"><input type="radio" name="question-1" value="answer-3" disabled> option 3</label><br>
+          
+          <label for="answer-4"><input type="radio" name="question-1" value="answer-4" disabled> option 4</label>
+      </div>
+      <div>
+        <h1 class="question-index">Question 2 of 10</h1>
+        <p class="question-text">question 6</p>
+        <div class="answer">
+          
+          <label for="answer-1" class="option-correct"><input type="radio" name="question-1" value="answer-1" disabled> option 1 <p>Correct answer</p></label><br>
+          
+          <label for="answer-2" class="wrong-answer"><input type="radio" name="question-1" value="answer-2" disabled checked> option 2 <p>Your answer</p></label><br>
+          
+          <label for="answer-3"><input type="radio" name="question-1" value="answer-3" disabled> option 3</label><br>
+          
+          <label for="answer-4"><input type="radio" name="question-1" value="answer-4" disabled> option 4</label>
+      </div>
+      <div id="box-result">
+        <div id="box-result-text">
+          <h1>Result:</h1>
+          <p id="scores">1/10</p>
+          <strong>10%</strong>
+          <p id="review-quotes">Practice more to improve it :D</p>
+        </div>
+        <div id="btn-try-again">
+          <button >Try again ></button>
+        </div>
+      </div>
     </section>
   </article>
 </body>

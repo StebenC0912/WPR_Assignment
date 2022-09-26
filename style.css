@@ -1,143 +1,220 @@
 /* TODO(you): Write the CSS to finish the assignment! */
-body{
-    font-family: 'Proxima Nova', 'Helvetica','Arial', sans-serif;
-    width: 700px;
-    margin: 0 auto;
+/*the general css for all body like font-family and max-width*/
+body {
+  font-family: "Proxima Nova", "Helvetica", "Arial", sans-serif;
+  width: 700px;
+  margin: 0 auto;
 }
-header{
-    max-width: 100%;
-    width: 700px;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    height: 80px;
-    border-bottom: 1px solid #ccc;
+/*the general css for the header*/
+header {
+  max-width: 100%;
+  width: 700px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 80px;
+  border-bottom: 1px solid #ccc;
 }
-#course-name strong{
-    font-family: 'Helvetica', sans-serif;
-    font-size: 32px;
-    color: #ee3322;
-    align-self: start;
+/*the general css for the header logo*/
+#course-name strong {
+  font-family: "Helvetica", sans-serif;
+  font-size: 32px;
+  color: #ee3322;
+  align-self: start;
 }
-    
-.stack-circle{
-    display: flex;
-    Justify-content: space-around;
-    align-items: flex-end;
+/*the general css for the header logo*/
+.stack-circle {
+  display: flex;
+  justify-content: space-around;
+  align-items: flex-end;
 }
-.stack-circle strong{
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    width: 50px;
-    height: 50px;
-    border-radius: 100%;
-    background-color: #ffee00;
-    transform: rotate(-30deg);
-    color: #222222;
-    font-size: 18px;
-    font-family: 'Proxima Nova', sans-serif;
+.stack-circle strong {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 50px;
+  height: 50px;
+  border-radius: 100%;
+  background-color: #ffee00;
+  transform: rotate(-30deg);
+  color: #222222;
+  font-size: 18px;
+  font: "Proxima Nova", sans-serif;
 }
-
-#quiz-name{
-    background-image: url("../images/background.jpg");
-    background-size: cover;
-    background-position: center center;
-    background-repeat: no-repeat;
-    height: 425px;
-    width: 700px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+/*the quiz background image and the name of the quiz*/
+#quiz-name {
+  background-image: url("../images/background.jpg");
+  background-size: cover;
+  background-position: center center;
+  background-repeat: no-repeat;
+  height: 425px;
+  max-width: 700px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
-#quiz-name h1{
-    font-family: 'Pangolin', 'Trebuchet MS', cursive;
-    font-size: 60px;
-    max-width: 75%;
-    color: black;
-    text-align: center;
-    background-color: white;
-    padding: 10px;
+#quiz-name h1 {
+  font-family: "Pangolin", "Trebuchet MS", cursive;
+  font-size: 60px;
+  max-width: 75%;
+  color: black;
+  text-align: center;
+  background-color: white;
+  padding: 10px;
 }
-#author{
-    text-align: center;
-    font-size: 14px;
-    margin: 0;
-    margin-top: 18px;
+/*the css for the quiz author*/
+#author {
+  text-align: center;
+  font-size: 14px;
+  margin: 0;
+  margin-top: 18px;
 }
-#box{
-    background-color: #f1f1f1;
-    display: block;
-    align-items: center;
-    justify-content: center;
+/*the css for the start-box*/
+#box {
+  background-color: #f1f1f1;
+  display: block;
+  align-items: center;
+  justify-content: center;
 }
 #box-start {
-    text-align: center;
-    height: 100px;
-    width: 700px;
+  text-align: center;
+  height: 100px;
+  max-width: 700px;
 }
-#box-start h1{
-    padding: 18px;
-    margin: 0;
+#box-start h1 {
+  font-size: 1.5em;
+  padding: 18px;
+  margin: 0;
 }
-#box-start p{
-    margin: 0;
-    padding-bottom: 18px;
+#box-start p {
+  margin: 0;
+  padding-bottom: 18px;
 }
-#btn-start{
-    display: flex;
-    justify-content: center;
+/*the css for the start button*/
+#btn-start {
+  display: flex;
+  justify-content: center;
 }
-#btn-start button{
-    margin-top: 18px;
-    margin-bottom: 18px;
-    padding: 18px;
-    background-color: rgb(60, 60, 212);
-    color: white;
+#btn-start button {
+  margin-top: 18px;
+  margin-bottom: 18px;
+  padding: 18px;
+  background-color: #2196F3;
+  color: white;
 }
-#attempt-quiz{
-    width: 700px;
+#btn-start button:hover {
+  background-color: #0d8bf2;
 }
-.question-text{
-    margin: 0;
+/*the css for the question part*/
+#attempt-quiz {
+  max-width: 700px;
 }
-.answer{
-    margin: 0;
-    padding-top: 30px;
-    padding-bottom: 30px;
-    
+.question-text {
+  margin: 0;
 }
-.answer label{
-    background-color: #f1f1f1;
-    margin: 0;
-    padding: 15px;
-    border: white solid 1px;
-    display: block;
+/*the css for the option button*/
+.answer {
+  margin: 0;
+  padding-top: 30px;
+  padding-bottom: 30px;
 }
-.answer input{
-    margin-top: 0;
-    margin-bottom: 0;
-    margin-left: 0;
-    margin-right: 10px;
-    width: 17px;
+.answer label {
+  background-color: #f1f1f1;
+  margin: 0;
+  padding: 15px;
+  border: white solid 1px;
+  display: block;
 }
-br{
-    display: none;
+.answer input {
+  margin-top: 0;
+  margin-bottom: 0;
+  margin-left: 0;
+  margin-right: 10px;
+  width: 17px;
 }
-.answer label:hover{
+br {
+  display: none;
+}
+#attempt-quiz label:hover {
+  background-color: #ddd;
+}
+#attempt-quiz input:checked + label {
+  background-color: #ddd;
+}
+/*the css for the submit button*/
+#btn-submit {
+  background-color: #ddd;
+  display: flex;
+  justify-content: center;
+}
+#btn-submit button {
+  margin-top: 18px;
+  margin-bottom: 18px;
+  padding: 18px;
+  background-color: #4caf50;
+  color: white;
+}
+#btn-submit button:hover {
+  background-color: #46a049;
+}
+/*the css for the result part*/
+.review-quiz input:checked + label {
+  background-color: #d4edda;
+}
+/*the css for review and compare the correct option and the user option*/
+.answer p{
+  float: right;
+  background-color: rgba(0, 0, 0, 0.2);
+  margin: -5px;
+  padding: 5px;
+}
+.answer .correct-answer{
+    background-color: #d4edda;
+}
+.answer .option-correct{
     background-color: #ddd;
 }
-.answer input:checked + label{
-    background-color: #ddd;
+.answer .wrong-answer{
+    background-color: #f8d7da;
 }
-#btn-submit{
-    text-align: center;
-    background-color: #ddd;
+/*css for the scores and retry part*/
+#box-result {
+  background-color: #f1f1f1;
+  display: block;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  
 }
-#btn-submit button{
-    margin-top: 18px;
-    margin-bottom: 18px;
-    padding: 18px;
-    background-color:green;
-    color: white;
+#box-result h1 {
+  font-size: 1.5em;
+  padding: 18px;
+  margin: 0;
+}
+#box-result-text #scores {
+  font-size: 24px;
+  margin: 0;
+  padding-bottom: 18px;
+}
+#btn-try-again button{
+  margin-top: 18px;
+  margin-bottom: 18px;
+  padding: 18px;
+  background-color: #2196F3;
+  color: white;
+}
+
+#btn-try-again button:hover {
+  background-color: #0d8bf2;
+}
+/*the css for responsive page*/
+@media screen and (max-width: 700px) {
+  body {
+    width: 95%;
+  }
+}
+@media screen and (max-width: 500px) {
+  .stack-circle{
+    visibility: hidden;
+  }
 }
