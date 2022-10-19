@@ -1,0 +1,60 @@
+const btn_start = document.querySelector("#introduction button.btn-start");
+btn_start.addEventListener("click", update);
+//update new quesions and answers
+function update() {
+  //fetch API
+  fetch("https://wpr-quiz-api.herokuapp.com/attempts", {
+    method: "POST",
+    headers: {
+        "Content-Type": "application/json"
+    }
+  })
+  .then(response => response.json())
+  .then(data => {
+    console.log(data);
+    console.log("start");
+    var correctAns = data.correctAnswers;
+    const questionArr = data.questions;
+
+    questionArr.forEach((question, index) => {
+      //create question index and text
+    const indexQuestion = document.createElement("h2");
+    indexQuestion.classList.add("question-index");
+    indexQuestion.textContent = Question ${index+1} of 10;
+
+    const textQuestion = document.createElement("div");
+    textQuestion.classList.add("question-text");
+    textQuestion.textContent = question.text;
+
+    const form = document.createElement("form");
+    console.log(correct_ans);
+    // const current_id = correct_ans[index];
+    const answers = question.answers;
+    answers.forEach((answer, x) => {
+      const option = document.createElement("div");
+      option.classList.add("option");
+      const radio = document.createElement("input");
+      radio.setAttribute("type", "radio");
+      radio.setAttribute("value", x);
+      const label = document.createElement("label");
+      label.textContent = answer;
+      option.appendChild(radio);
+      option.appendChild(label);
+      form.appendChild(option);
+    });
+    
+    document.querySelector("#attempt-quiz").appendChild(indexQuestion);
+    document.querySelector("#attempt-quiz").appendChild(textQuestion);
+    document.querySelector("#attempt-quiz").appendChild(form);
+    
+    });
+    const btn_submit = document.createElement("div");
+    btn_submit.setAttribute("id", "btn-submit");
+    const btn_submit2 = document.createElement("button");
+    btn_submit2.setAttribute("type", "button");
+    btn_submit2.setAttribute("onclick", "showHide2()");
+    btn_submit2.textContent = 'Submit your answer ❯';
+    btn_submit.appendChild(btn_submit2);
+    document.querySelector("#attempt-quiz").appendChild(btn_submit);
+  });
+}

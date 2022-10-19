@@ -39,11 +39,10 @@ header {
   transform: rotate(-30deg);
   color: #222222;
   font-size: 18px;
-  font: "Proxima Nova", sans-serif;
 }
 /*the quiz background image and the name of the quiz*/
 #quiz-name {
-  background-image: url("../images/background.jpg");
+  background-image: url("./images/background.jpg");
   background-size: cover;
   background-position: center center;
   background-repeat: no-repeat;
@@ -99,7 +98,7 @@ header {
   margin-top: 18px;
   margin-bottom: 18px;
   padding: 18px;
-  background-color: #2196F3;
+  background-color: #2196f3;
   color: white;
 }
 #btn-start button:hover {
@@ -119,26 +118,31 @@ header {
   padding-bottom: 30px;
 }
 .answer label {
-  background-color: #f1f1f1;
   margin: 0;
-  padding: 15px;
+  padding: 15px 0;
   border: white solid 1px;
   display: block;
+  border: none;
 }
 .answer input {
   margin-top: 0;
   margin-bottom: 0;
-  margin-left: 0;
+  margin-left: 15px;
   margin-right: 10px;
   width: 17px;
 }
-br {
-  display: none;
+hr {
+  margin: 0;
+  border: white solid 1px;
 }
-#attempt-quiz label:hover {
+.option {
+  display: flex;
+  background-color: #f1f1f1;
+}
+#attempt-quiz .option:hover {
   background-color: #ddd;
 }
-#attempt-quiz input:checked + label {
+.selected .option {
   background-color: #ddd;
 }
 /*the css for the submit button*/
@@ -162,20 +166,20 @@ br {
   background-color: #d4edda;
 }
 /*the css for review and compare the correct option and the user option*/
-.answer p{
+.answer p {
   float: right;
   background-color: rgba(0, 0, 0, 0.2);
   margin: -5px;
   padding: 5px;
 }
-.answer .correct-answer{
-    background-color: #d4edda;
+.answer .correct-answer {
+  background-color: #d4edda;
 }
-.answer .option-correct{
-    background-color: #ddd;
+.answer .option-correct {
+  background-color: #ddd;
 }
-.answer .wrong-answer{
-    background-color: #f8d7da;
+.answer .wrong-answer {
+  background-color: #f8d7da;
 }
 /*css for the scores and retry part*/
 #box-result {
@@ -184,7 +188,6 @@ br {
   align-items: center;
   justify-content: center;
   text-align: center;
-  
 }
 #box-result h1 {
   font-size: 1.5em;
@@ -196,11 +199,11 @@ br {
   margin: 0;
   padding-bottom: 18px;
 }
-#btn-try-again button{
+#btn-try-again button {
   margin-top: 18px;
   margin-bottom: 18px;
   padding: 18px;
-  background-color: #2196F3;
+  background-color: #2196f3;
   color: white;
 }
 
@@ -214,7 +217,11 @@ br {
   }
 }
 @media screen and (max-width: 500px) {
-  .stack-circle{
+  .stack-circle {
     visibility: hidden;
   }
+}
+/*the css to hide the screen 2 and 3*/
+.hidden {
+  display: none;
 }
