@@ -154,9 +154,12 @@ function attemptQuiz() {
             }
             if (UserAnswerArr[formAnswerReview.id] == index) {
               radio.checked = true;
-              if (UserAnswerArr[formAnswerReview.id] == correctAns[formAnswerReview.id]) {
+              if (
+                UserAnswerArr[formAnswerReview.id] ==
+                correctAns[formAnswerReview.id]
+              ) {
                 option.classList.add("correct-answer");
-              } else{
+              } else {
                 option.classList.add("wrong-answer");
               }
             }
@@ -166,7 +169,6 @@ function attemptQuiz() {
             //add hr
             const hr = document.createElement("hr");
             formAnswerReview.appendChild(option);
-            formAnswerReview.appendChild(hr);
           });
           div.appendChild(questionIndexReview);
           div.appendChild(questionTextReview);
@@ -174,6 +176,14 @@ function attemptQuiz() {
 
           review.appendChild(div);
         });
+
+        const score = data.score;
+        const scoreText = data.scoreText;
+        document.querySelector("#score").textContent = `${score}/10`;
+        document.querySelector("#box-result strong").textContent = `${
+          (score / 10) * 100
+        }%`;
+        document.querySelector("#scoreText").textContent = scoreText;
       });
   }
 }
