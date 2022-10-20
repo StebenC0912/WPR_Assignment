@@ -97,7 +97,7 @@ function attemptQuiz() {
       block: "start",
     });
     const data = {
-      answers: {}
+      answers: {},
     };
     const formArr = document.querySelectorAll("#question-part form");
     formArr.forEach((form) => {
@@ -115,6 +115,7 @@ function attemptQuiz() {
     })
       .then((res) => res.json())
       .then((data) => {
+        console.log(data);
         const review = document.querySelector("#question-review");
         const questionArr = data.questions;
         const UserAnswerArr = data.answers || {};
@@ -130,7 +131,8 @@ function attemptQuiz() {
           questionTextReview.classList.add("question-text");
           questionTextReview.textContent = question.text;
 
-          const formAnswer = document.createElement("form");
+          const formAnswerReview = document.createElement("form");
+          formAnswerReview.id = question._id;
 
           const answersArr = question.answers;
           answersArr.forEach((answer, index) => {
@@ -144,18 +146,18 @@ function attemptQuiz() {
             const radio = document.createElement("input");
             radio.setAttribute("type", "radio");
             radio.setAttribute("value", index);
-            radio.name = formAnswer.id;
+            radio.name = formAnswerReview.id;
             radio.disabled = true;
-            
-            if (correctAns[question._id] == index) {
-              option.classList.add("correct");
+
+            if (correctAns[formAnswerReview.id] == index) {
+              option.classList.add("option-correct");
             }
-            if (UserAnswerArr[question._id] == index) {
+            if (UserAnswerArr[formAnswerReview.id] == index) {
               radio.checked = true;
-              if (userAnswerArr[question._id] != correctAns[question._id]) {
-                option.classList.add("wrong-answer");
-              } else {
+              if (UserAnswerArr[formAnswerReview.id] == correctAns[formAnswerReview.id]) {
                 option.classList.add("correct-answer");
+              } else{
+                option.classList.add("wrong-answer");
               }
             }
             //display option
@@ -163,21 +165,15 @@ function attemptQuiz() {
             option.appendChild(optionText);
             //add hr
             const hr = document.createElement("hr");
-            formAnswer.appendChild(option);
-            formAnswer.appendChild(hr);
+            formAnswerReview.appendChild(option);
+            formAnswerReview.appendChild(hr);
           });
           div.appendChild(questionIndexReview);
           div.appendChild(questionTextReview);
-          div.appendChild(formAnswer);
+          div.appendChild(formAnswerReview);
 
           review.appendChild(div);
         });
-        const score = data.score;
-        const scoreText = data.scoreText;
-        document.querySelector("#score").textContent = "${score} / 10";
-        document.querySelector("#score-text strong").textContent =
-          "${(score/10)*100}%";
-        document.querySelector("#score-text").textContent = scoreText;
       });
   }
 }

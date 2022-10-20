@@ -95,3 +95,22 @@ for (let answer of allAnswers) {
     });
   }
 }
+
+if (UserAnswerArr[question._id] == index) {
+  radio.checked = true;
+  if (userAnswerArr[question._id] != correctAns[question._id]) {
+    option.classList.add("wrong-answer");
+  } else {
+    option.classList.add("correct-answer");
+  }
+}
+if (correctAns[question._id] == index) {
+  option.classList.add("correct");
+}
+
+const score = data.score;
+        const scoreText = data.scoreText;
+        document.querySelector("#score").textContent = "${score} / 10";
+        document.querySelector("#score-text strong").textContent =
+          "${(score/10)*100}%";
+        document.querySelector("#score-text").textContent = scoreText;
