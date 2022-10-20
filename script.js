@@ -10,19 +10,6 @@ const try_again = document.querySelector("#btn-try-again");
 
 let attemptId;
 
-const allAnswers = document.querySelectorAll("#attempt-quiz .answer");
-for (let answer of allAnswers) {
-  let options = document.querySelectorAll(`#${answer.id} .option`);
-  for (let option of options) {
-    option.addEventListener("click", (e) => {
-      let selectedOption = document.querySelector(`#${answer.id}  .selected`);
-      if (selectedOption) {
-        selectedOption.classList.remove("selected");
-      }
-      e.currentTarget.classList.add("selected");
-    });
-  }
-}
 
 //hide screen 1 and display screen 2
 
@@ -83,12 +70,12 @@ function startQuiz() {
           form.appendChild(option);
           form.appendChild(hr);
           //handle click event
-          option.addEventListener("click", (e) => {
-            const selectedOption = document.querySelector(".selected");
-            if (selectedOption) {
-              selectedOption.classList.remove("selected");
+          option.addEventListener("click", () => {
+            const selected = document.querySelector(".selected");
+            if (selected) {
+              selected.classList.remove("selected");
             }
-            e.target.classList.add("selected");
+            option.classList.add("selected");
           });
         });
 
@@ -127,8 +114,8 @@ function attemptQuiz() {
       },
       body: JSON.stringify(data),
     })
-    then((res) => res.json());
-    then((data) => {
+    then(res => res.json())
+    then(data => {
       const review = document.querySelector("#question-review");
       const questionArr = data.questions;
       const UserAnswerArr = data.answers || {};

@@ -142,6 +142,9 @@ hr {
 #attempt-quiz .option:hover {
   background-color: #ddd;
 }
+input.selected{
+  margin-right: 15px;
+}
 .selected {
   background-color: #ddd;
 }

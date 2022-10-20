@@ -80,3 +80,18 @@ for (const input of inputs) {
   });
 }
 
+
+
+const allAnswers = document.querySelectorAll("#attempt-quiz .answer");
+for (let answer of allAnswers) {
+  let options = document.querySelectorAll(`#${answer.id} .option`);
+  for (let option of options) {
+    option.addEventListener("click", (e) => {
+      let selectedOption = document.querySelector(`#${answer.id}  .selected`);
+      if (selectedOption) {
+        selectedOption.classList.remove("selected");
+      }
+      e.currentTarget.classList.add("selected");
+    });
+  }
+}
