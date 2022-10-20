@@ -117,11 +117,11 @@ header {
   padding-top: 30px;
   padding-bottom: 30px;
 }
+
 .answer label {
   margin: 0;
   padding: 15px 0;
   border: white solid 1px;
-  display: block;
   border: none;
 }
 .answer input {
@@ -168,7 +168,6 @@ hr {
 /*the css for review and compare the correct option and the user option*/
 .answer p {
   float: right;
-  background-color: rgba(0, 0, 0, 0.2);
   margin: -5px;
   padding: 5px;
 }

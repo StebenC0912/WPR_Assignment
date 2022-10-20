@@ -67,15 +67,19 @@ function startQuiz() {
         // const current_id = correct_ans[index];
         const answers = question.answers;
         answers.forEach((answer, index) => {
-          const option = document.createElement("div");
+          const option = document.createElement("label");
           option.classList.add("option");
-          const label = document.createElement("label");
-          label.textContent = answer;
+          //generate options Text
+          const optionText = document.createElement("p");
+          optionText.classList.add("option-text");
+          optionText.textContent = answer
+          //generate input
           const radio = document.createElement("input");
           radio.setAttribute("type", "radio");
           radio.setAttribute("value", index);
+          radio.name = form.id;
           option.appendChild(radio);
-          option.appendChild(label);
+          option.appendChild(optionText);
           option.addEventListener("click", (e) => {
             const selectedOption = document.querySelector(".selected");
             if (selectedOption) {
