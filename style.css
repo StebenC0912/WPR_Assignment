@@ -142,7 +142,7 @@ hr {
 #attempt-quiz .option:hover {
   background-color: #ddd;
 }
-.selected .option {
+.selected {
   background-color: #ddd;
 }
 /*the css for the submit button*/
@@ -171,14 +171,41 @@ hr {
   margin: -5px;
   padding: 5px;
 }
-.answer .correct-answer {
-  background-color: #d4edda;
+.correct-answer {
+  background-color: #d4edda !important;
 }
-.answer .option-correct {
+
+.wrong-answer {
+  background-color: #f8d7da !important;
+}
+
+.option-correct {
   background-color: #ddd;
 }
-.answer .wrong-answer {
-  background-color: #f8d7da;
+
+.option-correct::after,
+.correct-answer::after {
+  /* Position */
+  position: absolute;
+  /* Content, alignment and color */
+  content: "Correct answer";
+  padding: 5px;
+  right: 10px;
+  background-color: rgba(0, 0, 0, 0.2);
+  color: white;
+  top: 10px;
+}
+
+.wrong-answer::after {
+  /* Position */
+  position: absolute;
+  /*Content and alignment*/
+  content: "Your answer";
+  padding: 5px;
+  right: 10px;
+  background-color: rgba(0, 0, 0, 0.2);
+  color: white;
+  top: 10px;
 }
 /*css for the scores and retry part*/
 #box-result {
