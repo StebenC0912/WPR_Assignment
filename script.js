@@ -10,7 +10,6 @@ const try_again = document.querySelector("#btn-try-again");
 
 let attemptId;
 
-
 //hide screen 1 and display screen 2
 
 function startQuiz() {
@@ -98,7 +97,7 @@ function attemptQuiz() {
       block: "start",
     });
     const data = {
-      answers: {},
+      answers: {}
     };
     const formArr = document.querySelectorAll("#question-part form");
     formArr.forEach((form) => {
@@ -113,72 +112,73 @@ function attemptQuiz() {
         "Content-Type": "application/json",
       },
       body: JSON.stringify(data),
-    });
-    then((res) => res.json());
-    then((data) => {
-      const review = document.querySelector("#question-review");
-      const questionArr = data.questions;
-      const UserAnswerArr = data.answers || {};
-      const correctAns = data.correctAnswers;
-      questionArr.forEach((question, index) => {
-        const div = document.createElement("div");
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        const review = document.querySelector("#question-review");
+        const questionArr = data.questions;
+        const UserAnswerArr = data.answers || {};
+        const correctAns = data.correctAnswers;
+        questionArr.forEach((question, index) => {
+          const div = document.createElement("div");
 
-        const questionIndexReview = document.createElement("h2");
-        questionIndexReview.classList.add("question-index");
-        questionIndexReview.textContent = `Question ${index + 1} of 10`;
+          const questionIndexReview = document.createElement("h2");
+          questionIndexReview.classList.add("question-index");
+          questionIndexReview.textContent = `Question ${index + 1} of 10`;
 
-        const questionTextReview = document.createElement("p");
-        questionTextReview.classList.add("question-text");
-        questionTextReview.textContent = question.text;
+          const questionTextReview = document.createElement("p");
+          questionTextReview.classList.add("question-text");
+          questionTextReview.textContent = question.text;
 
-        const formAnswer = document.createElement("form");
+          const formAnswer = document.createElement("form");
 
-        const answersArr = question.answers;
-        answersArr.forEach((answer, index) => {
-          const option = document.createElement("label");
-          option.classList.add("option");
-          //generate options Text
-          const optionText = document.createElement("p");
-          optionText.classList.add("option-text");
-          optionText.textContent = answer;
-          //generate input
-          const radio = document.createElement("input");
-          radio.setAttribute("type", "radio");
-          radio.setAttribute("value", index);
-          radio.name = formAnswer.id;
-
-          if (correctAns[question._id] == index) {
-            option.classList.add("correct");
-          }
-          if (UserAnswerArr[question._id] == index) {
-            radio.checked = true;
-            if (userAnswerArr[question._id] != correctAns[question._id]) {
-              option.classList.add("wrong-answer");
-            } else {
-              option.classList.add("correct-answer");
+          const answersArr = question.answers;
+          answersArr.forEach((answer, index) => {
+            const option = document.createElement("label");
+            option.classList.add("option");
+            //generate options Text
+            const optionText = document.createElement("p");
+            optionText.classList.add("option-text");
+            optionText.textContent = answer;
+            //generate input
+            const radio = document.createElement("input");
+            radio.setAttribute("type", "radio");
+            radio.setAttribute("value", index);
+            radio.name = formAnswer.id;
+            radio.disabled = true;
+            
+            if (correctAns[question._id] == index) {
+              option.classList.add("correct");
             }
-          }
-          //display option
-          option.appendChild(radio);
-          option.appendChild(optionText);
-          //add hr
-          const hr = document.createElement("hr");
-          formAnswer.appendChild(option);
-          formAnswer.appendChild(hr);
-        });
-        div.appendChild(questionIndexReview);
-        div.appendChild(questionTextReview);
-        div.appendChild(formAnswer);
+            if (UserAnswerArr[question._id] == index) {
+              radio.checked = true;
+              if (userAnswerArr[question._id] != correctAns[question._id]) {
+                option.classList.add("wrong-answer");
+              } else {
+                option.classList.add("correct-answer");
+              }
+            }
+            //display option
+            option.appendChild(radio);
+            option.appendChild(optionText);
+            //add hr
+            const hr = document.createElement("hr");
+            formAnswer.appendChild(option);
+            formAnswer.appendChild(hr);
+          });
+          div.appendChild(questionIndexReview);
+          div.appendChild(questionTextReview);
+          div.appendChild(formAnswer);
 
-        review.appendChild(div);
+          review.appendChild(div);
+        });
+        const score = data.score;
+        const scoreText = data.scoreText;
+        document.querySelector("#score").textContent = "${score} / 10";
+        document.querySelector("#score-text strong").textContent =
+          "${(score/10)*100}%";
+        document.querySelector("#score-text").textContent = scoreText;
       });
-      const score = data.score;
-      const scoreText = data.scoreText;
-      document.querySelector("#score").textContent = "${score} / 10";
-      document.querySelector("#score-text strong").textContent =
-        "${(score/10)*100}%";
-      document.querySelector("#score-text").textContent = scoreText;
-    });
   }
 }
 btn_submit.addEventListener("click", attemptQuiz);
