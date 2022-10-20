@@ -70,12 +70,12 @@ function startQuiz() {
           form.appendChild(option);
           form.appendChild(hr);
           //handle click event
-          option.addEventListener("click", () => {
-            const selected = document.querySelector(".selected");
+          option.addEventListener("click", (e) => {
+            const selected = form.querySelector(".selected");
             if (selected) {
               selected.classList.remove("selected");
             }
-            option.classList.add("selected");
+            e.currentTarget.classList.add("selected");
           });
         });
 
@@ -113,9 +113,9 @@ function attemptQuiz() {
         "Content-Type": "application/json",
       },
       body: JSON.stringify(data),
-    })
-    then(res => res.json())
-    then(data => {
+    });
+    then((res) => res.json());
+    then((data) => {
       const review = document.querySelector("#question-review");
       const questionArr = data.questions;
       const UserAnswerArr = data.answers || {};
