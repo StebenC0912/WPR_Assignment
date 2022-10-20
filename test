@@ -58,3 +58,25 @@ function update() {
     document.querySelector("#attempt-quiz").appendChild(btn_submit);
   });
 }
+//select answer display
+const inputs = document.querySelectorAll(".answer");
+for (const input of inputs) {
+  console.log(input);
+  const currentInput = input;
+  const options = currentInput.querySelectorAll(".option");
+  options.forEach((option) => {
+    option.addEventListener("click", function () {
+      const selectedOption = currentInput.querySelector(".selected");
+      if (selectedOption) {
+        //unselect the selected option
+        selectedOption.classList.remove("selected");
+      }
+      //select the clicked option
+      option.classList.add("selected");
+      //display the selected option
+      const checkThis = currentInput.querySelector(".selected input");
+      checkThis.checked = true;
+    });
+  });
+}
+
