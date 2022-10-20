@@ -97,13 +97,13 @@ function attemptQuiz() {
       block: "start",
     });
     const data = {
-      answers: {},
+      userAnswers: {},
     };
     const formArr = document.querySelectorAll("#question-part form");
     formArr.forEach((form) => {
       const UserAnswer = form.querySelector(".selected input");
       if (UserAnswer) {
-        data.answers[form.id] = UserAnswer.value;
+        data.userAnswers[form.id] = UserAnswer.value;
       }
     });
     fetch(`https://wpr-quiz-api.herokuapp.com/attempts/${attemptId}/submit`, {
@@ -118,7 +118,7 @@ function attemptQuiz() {
         console.log(data);
         const review = document.querySelector("#question-review");
         const questionArr = data.questions;
-        const UserAnswerArr = data.answers || {};
+        const UserAnswerArr = data.userAnswers || {};
         const correctAns = data.correctAnswers;
         questionArr.forEach((question, index) => {
           const div = document.createElement("div");
